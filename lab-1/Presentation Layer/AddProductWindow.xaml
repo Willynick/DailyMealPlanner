@@ -1,0 +1,48 @@
+﻿<Window x:Class="DailyMealPlanner.AddProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyMealPlanner"
+        xmlns:cc="clr-namespace:DailyMealPlanner.Service_Layer"
+        mc:Ignorable="d"
+        Title="AddProductWindow" Height="400" Width="300" Closing="OnClosing">
+
+    <Window.DataContext>
+        <cc:ProductVM/>
+    </Window.DataContext>
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock TextAlignment="Center" FontSize="14" FontWeight = "Bold" Margin="0,10,0,30" Grid.Column="0">Please enter the data to add/edit product</TextBlock>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Name:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Gramms:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Product.Gramms, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Protein:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Product.Protein, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Fats:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Product.Fats, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Carbs:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Product.Carbs, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Calories:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Product.Calories, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+
+            <Button Visibility="{Binding VisibilityAddButton}" Margin="0,10,0,0" Command="{Binding AddCommand}">Add Product</Button>
+            <Button Visibility="{Binding VisibilityEditButton}" Margin="0,0,0,0" Command="{Binding EditCommand}">Edit</Button>
+
+        </StackPanel>
+    </Grid>
+</Window>

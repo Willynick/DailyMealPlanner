@@ -1,0 +1,41 @@
+﻿<Window x:Class="DailyMealPlanner.AddCategoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyMealPlanner"
+        xmlns:cc="clr-namespace:DailyMealPlanner.Service_Layer"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Title="AddCategoryWindow" Height="400" Width="300" Closing="OnClosing">
+
+    <Window.DataContext>
+        <cc:CategoryVM/>
+    </Window.DataContext>
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock TextAlignment="Center" FontSize="14" FontWeight = "Bold" Margin="0,10,0,30" Grid.Column="0">Please enter the data to add/edit category</TextBlock>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Name:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Category.name, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Description:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Category.description, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Hidden:</TextBlock>
+                <TextBox Height="20" SelectionBrush="Blue" Text="{Binding Path=Category.hidden, UpdateSourceTrigger=PropertyChanged}" Width="88"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock FontWeight = "Bold" Margin="10,10,5,10">Icon:</TextBlock>
+                <Button Margin="10,10,5,10" Command="{Binding BrowseCommand}">Browse..</Button>
+            </WrapPanel>
+
+            <Button Visibility="{Binding VisibilityAddButton}" Margin="0,10,0,0" Command="{Binding AddCommand}">Add Category</Button>
+            <Button Visibility="{Binding VisibilityEditButton}" Margin="0,0,0,0" Command="{Binding EditCommand}">Edit</Button>
+            
+        </StackPanel>
+    </Grid>
+</Window>
